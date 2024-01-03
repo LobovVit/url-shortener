@@ -12,7 +12,7 @@ func SetShortHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 	} else {
-		w.Write([]byte(res))
+		w.Write([]byte("http://" + r.Host + "/" + res))
 		w.WriteHeader(http.StatusCreated)
 	}
 }
