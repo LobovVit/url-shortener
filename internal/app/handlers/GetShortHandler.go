@@ -11,9 +11,9 @@ func GetShortHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/plain")
 	res, err := actions.GetSingleVal(key)
 	if err != nil {
-		w.WriteHeader(http.StatusNotFound)
+		w.WriteHeader(http.StatusBadRequest)
 	} else {
-		w.WriteHeader(http.StatusOK)
-		w.Write([]byte(res))
+		w.Header().Set("Location", res)
+		w.WriteHeader(http.StatusTemporaryRedirect)
 	}
 }

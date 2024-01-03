@@ -5,7 +5,7 @@ import (
 )
 
 type Storage struct {
-	relation map[string]string
+	Relation map[string]string
 }
 
 func GetStorage() *Storage {
@@ -13,16 +13,16 @@ func GetStorage() *Storage {
 }
 
 func (ms *Storage) SetRelation(key string, val string) error {
-	ms.relation[key] = val
+	ms.Relation[key] = val
 	return nil
 }
 
 func (ms *Storage) GetAll() map[string]string {
-	return ms.relation
+	return ms.Relation
 }
 
 func (ms *Storage) GetSingle(key string) (string, error) {
-	res, ok := ms.relation[key]
+	res, ok := ms.Relation[key]
 	if ok {
 		return res, nil
 	} else {

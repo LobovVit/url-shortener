@@ -7,12 +7,12 @@ import (
 )
 
 func SetShortHandler(w http.ResponseWriter, r *http.Request) {
-	body, err := io.ReadAll(r.Body)
+	body, _ := io.ReadAll(r.Body)
 	res, err := actions.CheckAndSave(string(body))
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 	} else {
 		w.Write([]byte(res))
-		w.WriteHeader(http.StatusOK)
+		w.WriteHeader(http.StatusCreated)
 	}
 }
