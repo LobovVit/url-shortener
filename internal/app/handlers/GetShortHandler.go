@@ -13,7 +13,7 @@ func GetShortHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 	} else {
-		w.Header().Set("Location", res)
 		w.WriteHeader(http.StatusTemporaryRedirect)
+		w.Header().Set("Location", res)
 	}
 }
