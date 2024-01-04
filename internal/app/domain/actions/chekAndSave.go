@@ -22,7 +22,6 @@ func hash(text string) string {
 }
 
 func CheckAndSave(value string) (string, error) {
-
 	ret := hash(value)
 	err := store.SetRelation(ret, value)
 	if err != nil {
