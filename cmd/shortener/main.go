@@ -16,6 +16,7 @@ func main() {
 func run() error {
 	cfg := config.GetConfig()
 	mux := chi.NewRouter()
+
 	mux.Post("/", handlers.SetShortHandler)
 	mux.Get("/{key}", handlers.GetShortHandler)
 
