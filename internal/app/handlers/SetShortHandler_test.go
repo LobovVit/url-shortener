@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"github.com/LobovVit/url-shortener/internal/app/config"
 	"github.com/go-chi/chi/v5"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -50,6 +51,7 @@ func TestUpdateHandler(t *testing.T) {
 		},
 	}
 
+	config.GetConfig()
 	mux := chi.NewRouter()
 	mux.Post("/", SetShortHandler)
 	ts := httptest.NewServer(mux)
