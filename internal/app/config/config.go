@@ -7,7 +7,8 @@ import (
 )
 
 type Config struct {
-	Host string `env:"ADDRESS"`
+	HostA string `env:"ADDRESS_A"`
+	HostB string `env:"ADDRESS_B"`
 }
 
 var instance *Config
@@ -18,11 +19,15 @@ func GetConfig() *Config {
 	if err != nil {
 		log.Fatal(err)
 	}
-	host := flag.String("a", "localhost:8080", "адрес эндпоинта HTTP-сервера")
+	hostA := flag.String("a", "localhost:8080", "адрес эндпоинта HTTP-сервера")
+	hostB := flag.String("a", "localhost:8080", "адрес эндпоинта HTTP-сервера")
 	flag.Parse()
 
-	if instance.Host == "" {
-		instance.Host = *host
+	if instance.HostA == "" {
+		instance.HostA = *hostA
+	}
+	if instance.HostB == "" {
+		instance.HostB = *hostB
 	}
 	return instance
 }

@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"github.com/LobovVit/url-shortener/internal/app/config"
 	"github.com/LobovVit/url-shortener/internal/app/domain/actions"
 	"io"
 	"net/http"
@@ -13,6 +14,7 @@ func SetShortHandler(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusBadRequest)
 	} else {
 		w.WriteHeader(http.StatusCreated)
-		w.Write([]byte("http://" + r.Host + "/" + res))
+		cfg := config.GetConfig()
+		w.Write([]byte("http://" + cfg.HostB + "/" + res))
 	}
 }
