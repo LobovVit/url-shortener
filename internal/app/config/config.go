@@ -7,27 +7,28 @@ import (
 )
 
 type Config struct {
-	HostA string `env:"ADDRESS_A"`
-	HostB string `env:"ADDRESS_B"`
+	HostA string `env:"SERVER_ADDRESS"`
+	HostB string `env:"BASE_URL"`
 }
 
-var instance *Config
+var Instance *Config
 
 func GetConfig() *Config {
-	instance = &Config{}
-	err := env.Parse(instance)
+	Instance = &Config{}
+	err := env.Parse(Instance)
 	if err != nil {
 		log.Fatal(err)
 	}
-	hostA := flag.String("a", "localhost:8080", "адрес эндпоинта HTTP-сервера")
-	hostB := flag.String("b", "localhost:8080", "адрес эндпоинта HTTP-сервера")
+	hostA := flag.String(`a`, "localhost:8080", "SERVER_ADDRESS")
+	hostB := flag.String(`b`, "localhost:8080", "BASE_URL")
 	flag.Parse()
 
-	if instance.HostA == "" {
-		instance.HostA = *hostA
+	if Instance.HostA == "" {
+		Instance.HostA = *hostA
 	}
-	if instance.HostB == "" {
-		instance.HostB = *hostB
+	if Instance.HostB == "" {
+		Instance.HostB = *hostB
 	}
-	return instance
+
+	return Instance
 }

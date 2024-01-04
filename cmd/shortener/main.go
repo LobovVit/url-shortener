@@ -19,6 +19,5 @@ func run() error {
 
 	mux.Post("/", handlers.SetShortHandler)
 	mux.Get("/{key}", handlers.GetShortHandler)
-
 	return http.ListenAndServe(cfg.HostA, mux)
 }

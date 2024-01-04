@@ -14,7 +14,6 @@ func SetShortHandler(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusBadRequest)
 	} else {
 		w.WriteHeader(http.StatusCreated)
-		cfg := config.GetConfig()
-		w.Write([]byte("http://" + cfg.HostB + "/" + res))
+		w.Write([]byte("http://" + config.Instance.HostB + "/" + res))
 	}
 }
