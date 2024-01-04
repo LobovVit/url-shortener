@@ -20,7 +20,7 @@ func GetConfig() *Config {
 		log.Fatal(err)
 	}
 	hostA := flag.String("a", "localhost:8080", "адрес эндпоинта HTTP-сервера")
-	hostB := flag.String("a", "localhost:8080", "адрес эндпоинта HTTP-сервера")
+	hostB := flag.String("b", "localhost:8080", "адрес эндпоинта HTTP-сервера")
 	flag.Parse()
 
 	if instance.HostA == "" {
